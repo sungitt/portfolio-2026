@@ -1,0 +1,876 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!--====== NAV ========-->
+    <nav class="nav">
+      <div class="nav-inner">
+        <a href="#" class="nav-logo">SEON YEONG</a>
+        <div class="nav-links">
+          <a href="#aboutSection" data-target="aboutSection">About</a>
+          <a href="#webDesingSection" data-target="webDesingSection"
+            >Web Desing</a
+          >
+          <a href="#landingSection" data-target="landingSection"
+            >Landing Page</a
+          >
+          <a href="#appSection" data-target="appSection">APP Page</a>
+          <a href="#salesSection" data-target="salesSection">Sales Page</a>
+          <a href="#cardSection" data-target="cardSection">Card</a>
+        </div>
+      </div>
+    </nav>
+
+    <!--====== HERO ========-->
+    <section class="portfolio-section" id="portfolioSection">
+      <div class="portfolio-inner">
+        <div id="portfolioLine"></div>
+      </div>
+    </section>
+
+    <!--====== ABOUT ======-->
+    <section class="about-section" id="aboutSection">
+      <div class="section-title-wrap about-title-row">
+        <h2>About Me</h2>
+        <div class="section-title-line"></div>
+      </div>
+      <div class="about-content">
+        <!-- 왼쪽 40%: 인트로 + 스킬 -->
+        <div class="about-left">
+          <div class="about-intro">
+            <p class="about-greeting">
+              안녕하세요, 저는 <strong>선영</strong>입니다.
+            </p>
+            <p class="about-desc">
+              사용자 경험을 중심으로 생각하는 UX/UI 디자이너입니다.<br />
+              브랜드의 가치를 시각적으로 풀어내는 것을 좋아하며,<br />
+              디자인으로 이야기를 전달하는 것에 보람을 느낍니다.
+            </p>
+          </div>
+
+          <div class="about-skills">
+            <p class="about-skills-label">TOOL SKILLS</p>
+            <div class="about-skill-list">
+              <div class="about-skill-row">
+                <span class="about-skill-name">Photoshop</span>
+                <div class="about-skill-bar-bg">
+                  <div class="about-skill-bar" style="--pct: 95%"></div>
+                </div>
+                <span class="about-skill-pct">95%</span>
+              </div>
+              <div class="about-skill-row">
+                <span class="about-skill-name">Illustrator</span>
+                <div class="about-skill-bar-bg">
+                  <div class="about-skill-bar" style="--pct: 95%"></div>
+                </div>
+                <span class="about-skill-pct">95%</span>
+              </div>
+              <div class="about-skill-row">
+                <span class="about-skill-name">Figma</span>
+                <div class="about-skill-bar-bg">
+                  <div class="about-skill-bar" style="--pct: 80%"></div>
+                </div>
+                <span class="about-skill-pct">80%</span>
+              </div>
+              <div class="about-skill-row">
+                <span class="about-skill-name">HTML / CSS</span>
+                <div class="about-skill-bar-bg">
+                  <div class="about-skill-bar" style="--pct: 70%"></div>
+                </div>
+                <span class="about-skill-pct">70%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 오른쪽 60%: 프로필 그리드 -->
+        <div class="about-right">
+          <div class="about-profile-grid">
+            <div class="about-profile-item">
+              <div class="about-profile-icon">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                  <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                </svg>
+              </div>
+              <div class="about-profile-body">
+                <span class="about-profile-label">학력</span>
+                <span class="about-profile-value"
+                  >계명문화대학교 <br />디지털컨첸츠 졸업</span
+                >
+              </div>
+            </div>
+            <div class="about-profile-item">
+              <div class="about-profile-icon">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <circle cx="12" cy="8" r="6" />
+                  <path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11" />
+                </svg>
+              </div>
+              <div class="about-profile-body">
+                <span class="about-profile-label">자격증</span>
+                <span class="about-profile-value">GTQ그래픽기술자격 1급</span>
+              </div>
+            </div>
+            <div class="about-profile-item">
+              <div class="about-profile-icon">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <rect x="2" y="7" width="20" height="14" rx="2" />
+                  <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" />
+                </svg>
+              </div>
+              <div class="about-profile-body">
+                <span class="about-profile-label">전 직장</span>
+                <span class="about-profile-value">월드빌 주택조합위원회</span>
+              </div>
+            </div>
+            <div class="about-profile-item">
+              <div class="about-profile-icon">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 8v4l3 3" />
+                </svg>
+              </div>
+              <div class="about-profile-body">
+                <span class="about-profile-label">사용 툴</span>
+                <span class="about-profile-value"
+                  >Photoshop · Illustrator · Figma · HTML/CSS</span
+                >
+              </div>
+            </div>
+            <div class="about-profile-item">
+              <div class="about-profile-icon">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"
+                  />
+                </svg>
+              </div>
+              <div class="about-profile-body">
+                <span class="about-profile-label">관심 분야</span>
+                <span class="about-profile-value"
+                  >브랜딩 · 상세페이지 · 랜딩페이지 · UX/UI</span
+                >
+              </div>
+            </div>
+            <div class="about-profile-item">
+              <div class="about-profile-icon">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                  />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+              </div>
+              <div class="about-profile-body">
+                <span class="about-profile-label">이메일</span>
+                <span class="about-profile-value">sun634634@gmail.com</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tags-stage" id="tagsStage"></div>
+    </section>
+
+    <!--====== WEB DESING ======-->
+    <section class="section-page webDesing-section" id="webDesingSection">
+      <div class="section-inner">
+        <div class="section-title-wrap">
+          <h2>Web Desing</h2>
+          <div class="section-title-line"></div>
+        </div>
+
+        <div class="webDesing-layout">
+          <div class="webDesing-left">
+            <h3 class="webDesing-title">
+              VSC 기반<br />팀 프로젝트<br />
+              웹 디자인
+            </h3>
+            <p class="webDesing-desc">
+              실제 코드로 구현된 반응형 웹 디자인입니다.<br />
+              각 프로젝트 이미지를 클릭하면 새 창에서<br />
+              라이브 페이지를 확인할 수 있습니다.
+            </p>
+            <div class="webDesing-tags">
+              <span class="webDesing-tag">Photoshop</span>
+              <span class="webDesing-tag">Illustrator</span>
+              <span class="webDesing-tag">Figma</span>
+              <span class="webDesing-tag">HTML</span>
+              <span class="webDesing-tag">CSS</span>
+              <span class="webDesing-tag">JavaScript</span>
+            </div>
+          </div>
+
+          <div class="webDesing-right">
+            <!-- 카드 1 -->
+            <div class="webDesing-card">
+              <!-- 이미지만 클릭 -->
+              <a
+                class="webDesing-img-link"
+                href="YOUR_PROJECT_URL_1"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div class="webDesing-img-wrap">
+                  <img
+                    src="images/크린토피아 home.png"
+                    alt="크린토피아 리디자인"
+                  />
+                  <div class="webDesing-overlay">
+                    <span class="webDesing-open-btn">
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2.5"
+                      >
+                        <path
+                          d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"
+                        />
+                        <polyline points="15 3 21 3 21 9" />
+                        <line x1="10" y1="14" x2="21" y2="3" />
+                      </svg>
+                      리디자인 새탭
+                    </span>
+                  </div>
+                </div>
+              </a>
+
+              <!-- 제목 + PDF -->
+              <div class="webDesing-card-label">
+                <div class="webDesing-title-row">
+                  <span class="webDesing-card-title">크린토피아 리디자인</span>
+                  <a
+                    href="pdf/cleantopia.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="webDesing-pdf-link"
+                    aria-label="크린토피아 PDF 보기"
+                    title="PDF 보기"
+                  >
+                    <!-- 보통 많이 쓰는 document/file 아이콘 -->
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"
+                      />
+                      <path d="M14 2v5h5" />
+                      <path d="M9 15h6" />
+                      <path d="M9 11h3" />
+                    </svg>
+                    <span>PDF</span>
+                  </a>
+                </div>
+              </div>
+
+              <!-- 기여도 -->
+              <div class="webDesing-contrib">
+                <div class="webDesing-contrib-row">
+                  <div class="webDesing-contrib-header">
+                    <span class="webDesing-contrib-name">디자인</span>
+                    <span class="webDesing-contrib-pct">60%</span>
+                  </div>
+                  <div class="webDesing-contrib-bar-bg">
+                    <!-- 기여도 구라 / 수정하면됨-->
+                    <div class="webDesing-contrib-bar" style="--pct: 50%"></div>
+                  </div>
+                </div>
+
+                <div class="webDesing-contrib-row">
+                  <div class="webDesing-contrib-header">
+                    <span class="webDesing-contrib-name">HTML / CSS</span>
+                    <span class="webDesing-contrib-pct">40%</span>
+                  </div>
+                  <div class="webDesing-contrib-bar-bg">
+                    <div class="webDesing-contrib-bar" style="--pct: 30%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 카드 2 -->
+            <div class="webDesing-card">
+              <!-- 이미지만 클릭 -->
+              <a
+                class="webDesing-img-link"
+                href="https://apzkfhd.github.io/service-platform-project/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div class="webDesing-img-wrap">
+                  <img src="images/gogaba home.png" alt="GOgaba" />
+                  <div class="webDesing-overlay">
+                    <span class="webDesing-open-btn">
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2.5"
+                      >
+                        <path
+                          d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"
+                        />
+                        <polyline points="15 3 21 3 21 9" />
+                        <line x1="10" y1="14" x2="21" y2="3" />
+                      </svg>
+                      새로운 서비스 새탭
+                    </span>
+                  </div>
+                </div>
+              </a>
+
+              <!-- 제목 + PDF -->
+              <div class="webDesing-card-label">
+                <div class="webDesing-title-row">
+                  <span class="webDesing-card-title">GOgaba 새로운 서비스</span>
+                  <a
+                    href="pdf/gogaba.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="webDesing-pdf-link"
+                    aria-label="GOgaba PDF 보기"
+                    title="PDF 보기"
+                  >
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"
+                      />
+                      <path d="M14 2v5h5" />
+                      <path d="M9 15h6" />
+                      <path d="M9 11h3" />
+                    </svg>
+                    <span>PDF</span>
+                  </a>
+                </div>
+              </div>
+
+              <!-- 기여도 -->
+              <div class="webDesing-contrib">
+                <div class="webDesing-contrib-row">
+                  <div class="webDesing-contrib-header">
+                    <span class="webDesing-contrib-name">디자인</span>
+                    <span class="webDesing-contrib-pct">50%</span>
+                  </div>
+                  <div class="webDesing-contrib-bar-bg">
+                    <div class="webDesing-contrib-bar" style="--pct: 60%"></div>
+                  </div>
+                </div>
+
+                <div class="webDesing-contrib-row">
+                  <div class="webDesing-contrib-header">
+                    <span class="webDesing-contrib-name">HTML / CSS</span>
+                    <span class="webDesing-contrib-pct">30%</span>
+                  </div>
+                  <div class="webDesing-contrib-bar-bg">
+                    <div class="webDesing-contrib-bar" style="--pct: 40%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--====== LANDING PAGE ======-->
+    <section class="landing-section" id="landingSection">
+      <div class="landing-left">
+        <div class="landing-cloud" id="landingCloud">
+          <img src="images/phg2.png" alt="풍향고 구름" />
+        </div>
+        <div class="landing-left-inner">
+          <div class="rise-item rise-delay-1">
+            <h2>Landing Page<br />풍향고2</h2>
+          </div>
+          <div class="rise-item rise-delay-2">
+            <p>
+              3000만 조회수를 자랑하는 풍향고<br />시청유도와 이벤트 소개를 하는
+              랜딩페이지
+            </p>
+          </div>
+          <div class="rise-item rise-delay-3">
+            <div class="landing-tags">
+              <span class="landing-tag">Photoshop</span>
+              <span class="landing-tag">Illustrator</span>
+              <span class="landing-tag">Figma</span>
+              <span class="landing-tag">Branding</span>
+            </div>
+          </div>
+          <div class="rise-item rise-delay-4">
+            <a
+              href="images/phg.png"
+              class="landing-btn"
+              target="_blank"
+              rel="noopener"
+              id="landingViewBtn"
+              >View Project</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="landing-right-image rise-right">
+        <div class="landing-auto-scroll-wrap" id="landingAutoScroll">
+          <img
+            src="images/phg.png"
+            alt="랜딩 이미지"
+            id="landingImg"
+            class="landing-auto-img"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!--====== APP PAGE ======-->
+    <section class="section-page app-section" id="appSection">
+      <div class="section-inner">
+        <div class="section-title-wrap">
+          <h2>APP Page</h2>
+          <div class="section-title-line"></div>
+        </div>
+        <div class="app-top-row">
+          <div class="app-mockup-col">
+            <div class="app-mockup-wrap" id="appMockupWrap">
+              <video
+                class="app-mockup-video"
+                id="appMockupVideo"
+                src="images/AF.mp4"
+                autoplay
+                loop
+                muted
+                playsinline
+                poster="images/AF_poster.png"
+              >
+                <img
+                  src="images/AF_poster.png"
+                  alt="앱 목업"
+                  style="width: 100%; height: 100%; object-fit: cover"
+                />
+              </video>
+            </div>
+            <img src="images/아이폰 목업.png" class="app-mockup-frame" alt="" />
+          </div>
+          <div class="app-info-col">
+            <div class="app-img-stack">
+              <div class="app-img3">
+                <img src="images/나머지.png" alt="나머지 이미지" />
+              </div>
+              <a
+                class="app-img2"
+                href="https://www.figma.com/proto/mSjmRdTopQDasknIKFx3g7/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4?node-id=202-6184&t=7SH9zdauomMmyxa0-1"
+                target="_blank"
+                rel="noopener"
+                aria-label="Figma로 보기"
+              >
+                <img src="images/꽃머리.png" alt="회전 꽃" />
+              </a>
+            </div>
+            <div class="app-info-text">
+              <p class="app-figma-hint">
+                <svg width="11" height="11" viewBox="0 0 38 57" fill="none">
+                  <path
+                    d="M19 28.5C19 24.9 21.9 22 25.5 22C29.1 22 32 24.9 32 28.5C32 32.1 29.1 35 25.5 35C21.9 35 19 32.1 19 28.5Z"
+                    fill="#aaa"
+                  />
+                  <path
+                    d="M6 47.5C6 43.9 8.9 41 12.5 41H19V47.5C19 51.1 16.1 54 12.5 54C8.9 54 6 51.1 6 47.5Z"
+                    fill="#aaa"
+                  />
+                  <path
+                    d="M19 3V22H25.5C29.1 22 32 19.1 32 15.5C32 11.9 29.1 9 25.5 9H19V3Z"
+                    fill="#aaa"
+                  />
+                  <path
+                    d="M6 15.5C6 19.1 8.9 22 12.5 22H19V9H12.5C8.9 9 6 11.9 6 15.5Z"
+                    fill="#aaa"
+                  />
+                  <path
+                    d="M6 28.5C6 32.1 8.9 35 12.5 35H19V22H12.5C8.9 22 6 24.9 6 28.5Z"
+                    fill="#aaa"
+                  />
+                </svg>
+                꽃 이미지를 클릭하면 Figma 보러가기
+              </p>
+              <h3 class="app-text-title">APP Design</h3>
+              <p class="app-text-desc">
+                원하는 꽃 선물을 빠르게 선택하고 배송까지<br />해결하는 사용자를
+                위한 앱 제작
+              </p>
+              <div class="app-tags">
+                <span class="app-tag">Illustrator</span>
+                <span class="app-tag">Photoshop</span>
+                <span class="app-tag">Figma</span>
+                <span class="app-tag">Branding</span>
+                <span class="app-tag">AI images</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="app-img1-row">
+          <div class="app-img1-wrap app-float-in" id="appImg1Wrap">
+            <div class="float-box">
+              <img src="images/목업 작업.png" alt="앱 목업 전체" />
+            </div>
+            <div class="app-floor-shadow"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--====== SALES PAGE ======-->
+    <section class="section-page" id="salesSection">
+      <div class="section-inner">
+        <div class="section-title-wrap">
+          <h2>Sales Page</h2>
+          <div class="section-title-line"></div>
+        </div>
+
+        <div class="sales-list">
+          <!-- 01: 프렌즈 아이드롭 -->
+          <div class="sales-item from-right" data-sales>
+            <div
+              class="sales-img-wrap sales-img-clickable"
+              data-type="modal"
+              data-lightbox-src="images/프렌즈아이드롭 완성본.png"
+              data-lightbox-title="프렌즈 아이드롭"
+            >
+              <img
+                src="images/프렌즈아이드롭 완성본.png"
+                alt="프렌즈 아이드롭"
+              />
+            </div>
+
+            <div class="sales-text">
+              <span class="sales-num">01</span>
+              <h3 class="sales-title">프렌즈 아이드롭</h3>
+              <p class="sales-desc">
+                프렌즈 아이드롭 신제품 출시컨셉에 맞춰 상품안내 페이지<br />
+                기존의 라인업 안내와 신제품 출시 컨셉에 맞는 상세페이지 제작
+              </p>
+              <div class="sales-tags">
+                <span class="sales-tag">Photoshop</span>
+                <span class="sales-tag">Illustrator</span>
+                <span class="sales-tag">AI images</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 02: 레어뷰티 -->
+          <div class="sales-item reverse from-left" data-sales>
+            <div
+              class="sales-img-wrap sales-img-clickable sales-img-rare"
+              data-type="modal"
+              data-lightbox-src="images/레어뷰티.png"
+              data-lightbox-title="레어뷰티 향수"
+            >
+              <img src="images/레어뷰티.png" alt="레어뷰티 향수" />
+            </div>
+
+            <div class="sales-text">
+              <span class="sales-num">02</span>
+              <h3 class="sales-title">레어뷰티 향수</h3>
+              <p class="sales-desc">
+                레어뷰티 브랜드의 향수 상세페이지<br />
+                브랜드의 생각과 향수 컨셉과 더불어 특별한 패키지를 소개하는
+                상세페이지
+              </p>
+              <div class="sales-tags">
+                <span class="sales-tag">Photoshop</span>
+                <span class="sales-tag">Illustrator</span>
+                <span class="sales-tag">After Effects</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 03: 카페24 홈페이지 -->
+          <div class="sales-item sales-cafe24-row from-right" data-sales>
+            <div
+              class="sales-browser-wrap sales-img-clickable"
+              data-type="link"
+              data-link="https://sun634.cafe24.com/"
+            >
+              <div class="browser-bar">
+                <div class="browser-dots">
+                  <span class="browser-dot red"></span>
+                  <span class="browser-dot yellow"></span>
+                  <span class="browser-dot green"></span>
+                </div>
+                <span class="browser-url">https://sun634.cafe24.com/</span>
+              </div>
+
+              <div class="browser-content">
+                <img src="images/진스 home.png" alt="진스 홈페이지" />
+              </div>
+            </div>
+
+            <div class="sales-text">
+              <span class="sales-num">03</span>
+              <h3 class="sales-title">카페24 홈페이지</h3>
+              <p class="sales-desc">
+                카페24 기반으로 제작된 쇼핑몰 홈페이지입니다.<br />
+                JIN's 이름으로 로고 제작과 컨셉 디자인을 하였습니다.
+              </p>
+              <div class="sales-tags">
+                <span class="sales-tag">카페24</span>
+                <span class="sales-tag">Photoshop</span>
+                <span class="sales-tag">AI images</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SALES IMAGE MODAL -->
+    <div class="sales-modal" id="salesModal">
+      <button class="sales-modal-close" id="salesModalClose" aria-label="닫기">
+        ×
+      </button>
+      <div class="sales-modal-inner">
+        <img id="salesModalImg" src="" alt="" />
+      </div>
+    </div>
+
+    <!--====== CARD ======-->
+    <section class="section-page card-section" id="cardSection">
+      <div class="section-inner">
+        <div class="section-title-wrap">
+          <h2>Card</h2>
+          <div class="section-title-line"></div>
+        </div>
+        <div class="card-track-wrap">
+          <div class="card-inner">
+            <div class="card-track" id="cardTrack">
+              <div
+                class="card-item"
+                data-img="images/콜게이트 포스터 작업.png"
+                data-title="콜게이트 치약 포스터"
+              >
+                <div class="card-img-wrap">
+                  <img
+                    src="images/콜게이트 포스터 작업.png"
+                    alt="콜게이트 카드"
+                    class="card-img card-img-1"
+                  />
+                  <div class="card-popup">
+                    <p class="card-popup-title">Superpowr Smile?</p>
+                    <p class="card-popup-desc">
+                      콜게이트 문구를 사용하여 강렬한 인식의 포스터 제작
+                    </p>
+                  </div>
+                </div>
+                <div class="card-label">
+                  <span class="card-label-title">콜게이트 치약 포스터</span>
+                  <div class="card-label-tags">
+                    <span class="card-label-tag">Photoshop</span
+                    ><span class="card-label-tag">Illustrator</span
+                    ><span class="card-label-tag">AI images</span>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="card-item"
+                data-img="images/광주요.png"
+                data-title="광주요 식기 카드 제작"
+                data-sub="PS AI"
+              >
+                <div class="card-img-wrap">
+                  <img
+                    src="images/광주요.png"
+                    alt="광주요 카드"
+                    class="card-img card-img-2"
+                  />
+                  <div class="card-popup">
+                    <p class="card-popup-title">말띠 한정 광주요</p>
+                    <p class="card-popup-desc">
+                      붉은 말의해 한정과 사은행사 광주요 카드 제작
+                    </p>
+                  </div>
+                </div>
+                <div class="card-label">
+                  <span class="card-label-title">광주요 식기 카드 제작</span>
+                  <div class="card-label-tags">
+                    <span class="card-label-tag">Photoshop</span
+                    ><span class="card-label-tag">Illustrator</span>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="card-item"
+                data-img="images/다이소 뷰티.png"
+                data-title="다이소 인기 제품 카드 제작"
+              >
+                <div class="card-img-wrap">
+                  <img
+                    src="images/다이소 뷰티.png"
+                    alt="다이소 카드"
+                    class="card-img card-img-3"
+                  />
+                  <div class="card-popup">
+                    <p class="card-popup-title">다이소 뷰티 탑 10</p>
+                    <p class="card-popup-desc">
+                      다이소 뷰티 인기제품 선별 카드 제작
+                    </p>
+                  </div>
+                </div>
+                <div class="card-label">
+                  <span class="card-label-title"
+                    >다이소 인기 제품 카드 제작</span
+                  >
+                  <div class="card-label-tags">
+                    <span class="card-label-tag">Photoshop</span
+                    ><span class="card-label-tag">Illustrator</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--====== FOOTER ======-->
+    <footer class="site-footer" id="footerSection">
+      <div class="footer-inner">
+        <div class="footer-card" id="footerCard">
+          <div class="footer-card-left">
+            <p class="footer-eyebrow">PORTFOLIO 2026</p>
+            <h2 class="footer-name">SEON<br />YEONG</h2>
+            <p class="footer-role">UX/UI Designer · Branding · Web</p>
+          </div>
+          <div class="footer-card-divider"></div>
+          <div class="footer-card-right">
+            <div class="footer-links">
+              <a href="mailto:sun634634@gmail.com" class="footer-link">
+                <svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                  />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+                sun634634@gmail.com
+              </a>
+              <a
+                href="https://www.figma.com/"
+                target="_blank"
+                class="footer-link"
+              >
+                <svg width="14" height="14" viewBox="0 0 38 57" fill="none">
+                  <path
+                    d="M19 28.5C19 24.9 21.9 22 25.5 22C29.1 22 32 24.9 32 28.5C32 32.1 29.1 35 25.5 35C21.9 35 19 32.1 19 28.5Z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M6 47.5C6 43.9 8.9 41 12.5 41H19V47.5C19 51.1 16.1 54 12.5 54C8.9 54 6 51.1 6 47.5Z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M19 3V22H25.5C29.1 22 32 19.1 32 15.5C32 11.9 29.1 9 25.5 9H19V3Z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M6 15.5C6 19.1 8.9 22 12.5 22H19V9H12.5C8.9 9 6 11.9 6 15.5Z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M6 28.5C6 32.1 8.9 35 12.5 35H19V22H12.5C8.9 22 6 24.9 6 28.5Z"
+                    fill="currentColor"
+                  />
+                </svg>
+                Figma
+              </a>
+            </div>
+            <p class="footer-copy">
+              © 2026 Seon Yeong.<br />All rights reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- 라이트박스 -->
+    <div class="lightbox-overlay" id="lightboxOverlay">
+      <div class="lightbox-box" id="lightboxBox">
+        <button
+          class="lightbox-close"
+          id="lightboxClose"
+          aria-label="닫기"
+        ></button>
+        <img src="" alt="" id="lightboxImg" />
+        <p class="lightbox-caption" id="lightboxCaption"></p>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
