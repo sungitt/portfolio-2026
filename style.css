@@ -1,5 +1,55 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css");
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+
+@font-face {
+  font-family: "Suit";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Light.woff2")
+    format("woff2");
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Suit";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Suit";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Medium.woff2")
+    format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Suit";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-SemiBold.woff2")
+    format("woff2");
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Suit";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Bold.woff2")
+    format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Suit";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-ExtraBold.woff2")
+    format("woff2");
+  font-weight: 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Suit";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Heavy.woff2")
+    format("woff2");
+  font-weight: 900;
+  font-display: swap;
+}
 
 * {
   margin: 0;
@@ -9,19 +59,20 @@
 :root {
   --font-size-hero: 150px;
   --nav-h: 80px;
-  --red: #e82020;
+  --red: #ff2d42;
   --black: #111111;
   --gray: #cfcfcf;
   --pad: 100px;
-  --font-main: "Pretendard";
-  --font-nav: "IBM Plex Sans";
+  --font-main: "Playfair Display";
+  --font-nav: "pretendard";
+  --font-han: "Suit";
 }
 html,
 body {
   width: 100%;
   overflow-x: hidden;
   background: #fff;
-  font-family: var(--font-main);
+  font-family: var(--font-nav);
 }
 ::-webkit-scrollbar {
   width: 4px;
@@ -58,9 +109,9 @@ body {
   padding: 0 var(--pad);
 }
 .nav-logo {
-  font-family: var(--font-nav);
+  font-family: var(--font-main);
   font-size: 30px;
-  font-weight: 700;
+  font-weight: 800;
   color: #111;
   text-decoration: none;
   letter-spacing: 0.05em;
@@ -71,7 +122,6 @@ body {
   gap: 36px;
 }
 .nav-links a {
-  font-family: var(--font-nav);
   font-size: 18px;
   font-weight: 500;
   color: #111;
@@ -80,22 +130,19 @@ body {
   transition: opacity 0.2s;
 }
 .nav-links a:hover {
-  opacity: 0.5;
+  opacity: 1;
+  color: #ff2d42;
 }
 
-/* ── 섹션 scroll-margin 기본 초기화 ── */
+/* ── 섹션 scroll-margin ── */
 section {
   scroll-margin-top: 0;
 }
-
-/* About — padding-top 40px 이므로 nav(80) - 40 = 40px 당기기 */
 #aboutSection {
   scroll-margin-top: 40px;
 }
-
-/* 나머지 섹션 — padding-top 100px 이므로 nav(80) + (100-40) = 140px */
 #landingSection {
-  scroll-margin-top: 80px; /* 랜딩은 기존 유지 */
+  scroll-margin-top: 80px;
 }
 #webDesingSection,
 #salesSection,
@@ -138,7 +185,7 @@ section {
 .fill-letter,
 .brand-letter {
   display: block;
-  font-family: var(--font-main);
+  font-family: var(--nav-h);
   font-size: var(--font-size-hero);
   font-weight: 900;
   line-height: 1;
@@ -196,7 +243,7 @@ section {
 .section-title-wrap h2 {
   font-family: var(--font-main);
   font-size: 48px;
-  font-weight: 700;
+  font-weight: 500;
   color: #111;
   white-space: nowrap;
   flex-shrink: 0;
@@ -239,8 +286,6 @@ section {
 .about-title-row {
   margin-bottom: 48px;
 }
-
-/* ── 좌우 2열: 왼쪽 40% / 오른쪽 60% ── */
 .about-content {
   position: relative;
   z-index: 2;
@@ -248,41 +293,65 @@ section {
   gap: 80px;
   align-items: flex-start;
 }
-
-/* 왼쪽 40% */
 .about-left {
   flex: 0 0 40%;
   display: flex;
   flex-direction: column;
   gap: 48px;
 }
-
-/* 오른쪽 60% */
 .about-right {
   flex: 1;
   padding-top: 40px;
 }
 
-/* ── 인트로 ── */
+/* ── 어바웃 이름 무지개 반짝 ── */
+/* ─── ABOUT 섹션 "박선영" 무지개 shimmer ───
+   수정 위치: .about-greeting strong { ... }  
+   (about-greeting 안의 strong 태그에 이름이 들어있다고 가정)        */
+.about-greeting strong {
+  display: inline-block;
+  position: relative;
+  background: linear-gradient(
+    90deg,
+    #111 0%,
+    #111 30%,
+    #888 42%,
+    #fff 50%,
+    #888 58%,
+    #111 70%,
+    #111 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: silverFlow 2.4s linear infinite;
+}
+
+@keyframes silverFlow {
+  0% {
+    background-position: 100% center;
+  }
+  100% {
+    background-position: -100% center;
+  }
+}
+
 .about-greeting {
-  font-family: var(--font-main);
+  font-family: var(--font-han);
   font-size: 28px;
   font-weight: 700;
   color: #111;
   margin-bottom: 16px;
   line-height: 1.3;
 }
-.about-greeting strong {
-  color: var(--red);
-}
 .about-desc {
-  font-family: var(--font-main);
-  font-size: 17px;
+  font-family: var(--font-han);
+  font-size: 18px;
   color: #555;
   line-height: 1.9;
 }
 
-/* ── 프로필 그리드 ── */
 .about-profile-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -310,7 +379,7 @@ section {
   gap: 4px;
 }
 .about-profile-label {
-  font-family: var(--font-main);
+  font-family: var(--font-han);
   font-size: 14px;
   font-weight: 700;
   color: #aaa;
@@ -318,14 +387,13 @@ section {
   text-transform: uppercase;
 }
 .about-profile-value {
-  font-family: var(--font-main);
+  font-family: var(--font-han);
   font-size: 18px;
   font-weight: 600;
   color: #222;
   line-height: 1.5;
 }
 
-/* ── 스킬바 ── */
 .about-skills-label {
   font-family: var(--font-nav);
   font-size: 11px;
@@ -347,7 +415,7 @@ section {
   gap: 16px;
 }
 .about-skill-name {
-  font-family: var(--font-main);
+  font-family: var(--font-nav);
   font-size: 14px;
   font-weight: 600;
   color: #333;
@@ -527,14 +595,14 @@ section {
 }
 .landing-left-inner h2 {
   font-family: var(--font-main);
+  font-weight: 500;
   font-size: 52px;
-  font-weight: 900;
   color: #111;
   line-height: 1.15;
   margin-bottom: 20px;
 }
 .landing-left-inner p {
-  font-family: var(--font-main);
+  font-family: var(--font-han);
   font-size: 17px;
   color: #555;
   line-height: 1.8;
@@ -547,17 +615,17 @@ section {
   margin-bottom: 36px;
 }
 .landing-tag {
-  font-family: var(--font-main);
-  font-size: 13px;
+  font-family: var(--font-nav);
+  font-size: 12px;
   font-weight: 600;
-  color: #111;
-  border: 1.5px solid #111;
-  padding: 7px 18px;
+  color: #333;
+  border: 1.5px solid #bbb;
+  padding: 5px 14px;
   border-radius: 999px;
 }
 .landing-btn {
   display: inline-block;
-  font-family: var(--font-main);
+  font-family: var(--font-nav);
   font-size: 15px;
   font-weight: 700;
   color: #fff;
@@ -646,12 +714,14 @@ section {
   z-index: 10;
   pointer-events: none;
 }
+
+/* ── 앱섹션 info col ── */
 .app-info-col {
   flex: 1;
   display: flex;
   gap: 80px;
   align-items: flex-start;
-  margin-left: 400px;
+  margin-left: 500px;
   margin-top: 80px;
 }
 .app-img-stack {
@@ -712,7 +782,7 @@ section {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-family: var(--font-main);
+  font-family: var(--font-nav);
   font-size: 12px;
   color: #aaa;
   margin-bottom: -4px;
@@ -725,7 +795,7 @@ section {
   line-height: 1.2;
 }
 .app-text-desc {
-  font-family: var(--font-main);
+  font-family: var(--font-han);
   font-size: 16px;
   color: #555;
   line-height: 1.8;
@@ -737,7 +807,7 @@ section {
   max-width: 400px;
 }
 .app-tag {
-  font-family: var(--font-main);
+  font-family: var(--font-nav);
   font-size: 12px;
   font-weight: 600;
   color: #333;
@@ -745,13 +815,77 @@ section {
   padding: 5px 14px;
   border-radius: 999px;
 }
+
+/* ── 꾸밈 태그 세로 배치 ── */
+.app-mockup-bottom-deco {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+  margin-top: 200px;
+  position: relative;
+  left: 180px;
+  height: 20px;
+  width: 350px;
+}
+.app-deco-tag-new {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start; /* 왼쪽 정렬 */
+  gap: 7px;
+  width: 190px; /* 모든 태그 가로 길이 통일 */
+  font-family: var(--font-nav);
+  font-size: 20px;
+  font-weight: 400;
+  color: #333;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1.5px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 7px 13px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(14px);
+  animation: tagFadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.app-deco-tag-new:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.app-deco-tag-new:nth-child(2) {
+  animation-delay: 0.13s;
+}
+.app-deco-tag-new:nth-child(3) {
+  animation-delay: 0.21s;
+}
+.app-deco-tag-new:nth-child(4) {
+  animation-delay: 0.29s;
+}
+.app-deco-tag-new:nth-child(5) {
+  animation-delay: 0.37s;
+}
+.app-deco-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+@keyframes tagFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── 앱섹션 이미지1 하단 ── */
 .app-img1-row {
-  top: -200px;
   width: 100%;
   display: flex;
   justify-content: flex-end;
-  padding-right: 300px;
-  margin-top: -80px;
+  padding-right: 100px;
+  margin-top: -600px;
   position: relative;
   z-index: 5;
 }
@@ -799,7 +933,7 @@ section {
 @keyframes floatUp {
   0%,
   100% {
-    transform: translateY(0px);
+    transform: translateY(0);
   }
   50% {
     transform: translateY(-22px);
@@ -831,15 +965,15 @@ section {
   padding-top: 8px;
 }
 .webDesing-title {
-  font-family: var(--font-main);
+  font-family: var(--font-nav);
   font-size: 36px;
-  font-weight: 900;
+  font-weight: 600;
   color: #111;
   line-height: 1.2;
 }
 .webDesing-desc {
-  font-family: var(--font-main);
-  font-size: 16px;
+  font-family: var(--font-han);
+  font-size: 18px;
   color: #555;
   line-height: 1.85;
 }
@@ -850,9 +984,9 @@ section {
   gap: 8px;
 }
 .webDesing-tag {
-  font-family: var(--font-main);
+  font-family: var(--font-nav);
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
   color: #444;
   border: 1.5px solid #ccc;
   padding: 5px 14px;
@@ -941,7 +1075,7 @@ section {
   gap: 12px;
 }
 .webDesing-card-title {
-  font-family: var(--font-main);
+  font-family: var(--font-nav);
   font-size: 18px;
   font-weight: 700;
   color: #111;
@@ -950,7 +1084,7 @@ section {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-family: var(--font-main);
+  font-family: var(--font-nav);
   font-size: 12px;
   font-weight: 700;
   color: #555;
@@ -986,9 +1120,9 @@ section {
   justify-content: space-between;
 }
 .webDesing-contrib-name {
-  font-family: var(--font-main);
+  font-family: var(--font-nav);
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 500;
   color: #333;
   letter-spacing: 0.03em;
 }
@@ -1023,10 +1157,78 @@ section {
   transform: scaleX(1);
 }
 .webDesing-contrib-desc {
-  font-family: var(--font-main);
+  font-family: var(--font-han);
   font-size: 11px;
   color: #aaa;
   letter-spacing: 0.02em;
+}
+
+/* ── 피그마 / PDF 버튼 — 무지개 테두리 흐르기 ── */
+.webDesing-links {
+  display: flex;
+  gap: 8px;
+}
+
+.webDesing-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-nav);
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 999px;
+  position: relative;
+  color: #222;
+  background: #f5f5f5;
+  border: none;
+  transition: color 0.3s;
+  z-index: 0;
+}
+
+/* 무지개 테두리 레이어 */
+.webDesing-links a::before {
+  content: "";
+  position: absolute;
+  inset: -1.5px;
+  border-radius: 999px;
+  padding: 1.5px;
+  background: linear-gradient(
+    115deg,
+    hsl(0, 81%, 64%),
+    hsl(45, 81%, 64%),
+    hsl(90, 81%, 64%),
+    hsl(135, 81%, 64%),
+    hsl(180, 81%, 64%),
+    hsl(225, 81%, 64%),
+    hsl(270, 81%, 64%),
+    hsl(315, 81%, 64%),
+    hsl(0, 81%, 64%)
+  );
+  background-size: 400% 100%;
+  animation: rainbowSlide 2s linear infinite;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
+}
+
+@keyframes rainbowSlide {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
+
+.webDesing-link.figma:hover,
+.webDesing-link.pdf:hover {
+  background: #bebebe;
+  color: #fff;
 }
 
 /* ── SALES ── */
@@ -1069,6 +1271,9 @@ section {
 .sales-cafe24-row .sales-text {
   flex: 1;
 }
+
+/* ── 세일즈 이미지 클릭 눌리는 효과 ──
+   수정 위치: .sales-img-wrap, .sales-browser-wrap 에 :active 추가   */
 .sales-img-wrap,
 .sales-browser-wrap {
   flex: 0 0 800px;
@@ -1081,17 +1286,29 @@ section {
   transition:
     box-shadow 0.35s ease,
     transform 0.35s ease;
+  cursor: pointer;
 }
 .sales-img-wrap {
-  aspect-ratio: 16 / 12;
+  aspect-ratio: 16/12;
 }
 .sales-browser-wrap {
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16/10;
 }
 .sales-img-wrap:hover,
 .sales-browser-wrap:hover {
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
   transform: translateY(-4px);
+}
+/* 클릭 시 눌리는 효과 */
+.sales-img-wrap:active,
+.sales-browser-wrap:active,
+.sales-img-clickable:active .sales-img-wrap,
+.sales-img-clickable:active .sales-browser-wrap {
+  transform: translateY(-1px) scale(0.985);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+  transition:
+    box-shadow 0.1s ease,
+    transform 0.1s ease;
 }
 .sales-img-wrap img {
   width: 100%;
@@ -1162,20 +1379,20 @@ section {
 }
 .sales-num {
   font-family: var(--font-nav);
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 400;
   color: #bbb;
   letter-spacing: 0.1em;
 }
 .sales-title {
-  font-family: var(--font-main);
+  font-family: var(--font-han);
   font-size: 32px;
   font-weight: 900;
   color: #111;
   line-height: 1.2;
 }
 .sales-desc {
-  font-family: var(--font-main);
+  font-family: var(--font-han);
   font-size: 16px;
   color: #555;
   line-height: 1.85;
@@ -1186,11 +1403,11 @@ section {
   gap: 8px;
 }
 .sales-tag {
-  font-family: var(--font-main);
+  font-family: var(--font-nav);
   font-size: 12px;
   font-weight: 600;
-  color: #444;
-  border: 1.5px solid #ccc;
+  color: #333;
+  border: 1.5px solid #bbb;
   padding: 5px 14px;
   border-radius: 999px;
 }
@@ -1349,14 +1566,14 @@ section {
   transform: translateY(0);
 }
 .card-popup-title {
-  font-family: var(--font-main);
+  font-family: var(--font-nav);
   font-size: 20px;
   font-weight: 700;
   color: #fff;
   margin-bottom: 6px;
 }
 .card-popup-desc {
-  font-family: var(--font-main);
+  font-family: var(--font-nav);
   font-size: 16px;
   color: rgba(255, 255, 255, 0.75);
   line-height: 1.6;
@@ -1368,13 +1585,13 @@ section {
   gap: 10px;
 }
 .card-label-title {
-  font-family: var(--font-main);
+  font-family: var(--font-han);
   font-size: 24px;
   font-weight: 700;
   color: #111;
 }
 .card-label-sub {
-  font-family: var(--font-main);
+  font-family: var(--font-han);
   font-size: 13px;
   color: #888;
 }
@@ -1385,25 +1602,18 @@ section {
   margin-top: 4px;
 }
 .card-label-tag {
-  font-family: var(--font-main);
+  font-family: var(--font-nav);
   font-size: 12px;
   font-weight: 600;
-  color: #444;
-  border: 1.5px solid #ccc;
-  padding: 4px 12px;
+  color: #333;
+  border: 1.5px solid #bbb;
+  padding: 5px 14px;
   border-radius: 999px;
-  transition:
-    border-color 0.2s,
-    color 0.2s;
-}
-.card-item:hover .card-label-tag {
-  border-color: #111;
-  color: #111;
 }
 
 /* ── FOOTER ── */
 .site-footer {
-  background: #f7f7f7;
+  background: #f0ede8; /* ← 베이지/크림 톤 */
   padding: 80px var(--pad);
   display: flex;
   align-items: center;
@@ -1416,16 +1626,20 @@ section {
   display: flex;
   justify-content: center;
 }
+
+/* ── 푸터 카드 — 베이지 라이트 ──
+   수정 위치: .footer-card { background: ... }        */
 .footer-card {
   width: 800px;
   height: 300px;
-  background: #111;
+  background: #f7f2ea; /* ← 크림/베이지 배경 */
+  border: 1px solid #e4ddd3;
   border-radius: 32px;
   display: flex;
   align-items: center;
   gap: 0;
   padding: 0 60px;
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 24px 80px rgba(160, 140, 110, 0.18);
   opacity: 0;
   transform: translateY(80px);
   transition:
@@ -1443,7 +1657,7 @@ section {
   font-family: var(--font-nav);
   font-size: 11px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.4);
+  color: #a89880;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   margin-bottom: 12px;
@@ -1452,21 +1666,21 @@ section {
   font-family: var(--font-main);
   font-size: 52px;
   font-weight: 900;
-  color: #fff;
+  color: #2a1f10;
   line-height: 1.05;
   letter-spacing: -0.01em;
 }
 .footer-role {
-  font-family: var(--font-main);
+  font-family: var(--font-nav);
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.45);
+  color: #9c8c78;
   margin-top: 12px;
   letter-spacing: 0.03em;
 }
 .footer-card-divider {
   width: 1px;
   height: 140px;
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(160, 130, 90, 0.2);
   margin: 0 52px;
   flex-shrink: 0;
 }
@@ -1488,17 +1702,20 @@ section {
   font-family: var(--font-nav);
   font-size: 14px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.75);
+  color: #5a4a38;
   text-decoration: none;
   transition: color 0.2s;
 }
 .footer-link:hover {
-  color: #fff;
+  color: #1a1008;
+}
+.footer-link svg {
+  flex-shrink: 0;
 }
 .footer-copy {
-  font-family: var(--font-main);
+  font-family: var(--font-nav);
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.25);
+  color: #b8a898;
   line-height: 1.7;
 }
 

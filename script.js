@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
     pL.className = "p-letter";
     pL.textContent = ch;
     if (b.idx === 0) {
-      pL.style.color = "#e82020";
+      pL.style.color = "#ff2d42";
       pL.style.opacity = "1";
     } else {
       pL.style.color = "transparent";
@@ -216,7 +216,7 @@ document.addEventListener("DOMContentLoaded", function () {
         height: 110,
         rotate: 10,
       },
-      { type: "text", text: "FRIENDSDROP", fontSize: 28, color: "#e82020" },
+      { type: "text", text: "FRIENDSDROP", fontSize: 28, color: "#2c2938" },
       { type: "text", text: "RAREBEAUTY", fontSize: 30, color: "#E8B1BD" },
       { type: "text", text: "DANSON", fontSize: 36, color: "#555555" },
       { type: "text", text: "COLGATE", fontSize: 28, color: "#A81723" },
@@ -453,6 +453,18 @@ document.addEventListener("DOMContentLoaded", function () {
       { threshold: 0.3 },
     );
     obs.observe(section);
+    function isVisible(el) {
+      var rect = el.getBoundingClientRect();
+      return rect.top < window.innerHeight && rect.bottom > 0;
+    }
+    function animateBars() {
+      if (isVisible(section)) {
+        section.classList.add("contrib-visible");
+        window.removeEventListener("scroll", animateBars);
+      }
+    }
+    window.addEventListener("scroll", animateBars);
+    animateBars();
   })();
 
   /* ════════════════════════════════════════
@@ -629,13 +641,40 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   })();
 
-  /* ── SALES 클릭 기능 ── */
+  /* ════════════════════════════════════════
+     SALES 클릭 기능 + 눌리는 효과 (JS)
+     수정 위치: salesClickables 이벤트 리스너
+  ════════════════════════════════════════ */
   const salesClickables = document.querySelectorAll(".sales-img-clickable");
   const salesModal = document.getElementById("salesModal");
   const salesModalImg = document.getElementById("salesModalImg");
   const salesModalClose = document.getElementById("salesModalClose");
 
   salesClickables.forEach((item) => {
+    /* ── 눌리는 효과: mousedown → scale down, mouseup → scale back ── */
+    const target =
+      item.querySelector(".sales-img-wrap") ||
+      item.querySelector(".sales-browser-wrap") ||
+      item;
+
+    item.addEventListener("mousedown", () => {
+      target.style.transition = "transform 0.1s ease, box-shadow 0.1s ease";
+      target.style.transform = "translateY(-1px) scale(0.985)";
+      target.style.boxShadow = "0 8px 24px rgba(0,0,0,0.14)";
+    });
+    item.addEventListener("mouseup", () => {
+      // hover 상태로 복귀
+      target.style.transition = "transform 0.25s ease, box-shadow 0.25s ease";
+      target.style.transform = "translateY(-4px)";
+      target.style.boxShadow = "0 24px 60px rgba(0,0,0,0.18)";
+    });
+    item.addEventListener("mouseleave", () => {
+      // 호버 해제 시 원래 상태
+      target.style.transition = "transform 0.35s ease, box-shadow 0.35s ease";
+      target.style.transform = "translateY(0)";
+      target.style.boxShadow = "0 16px 56px rgba(0,0,0,0.14)";
+    });
+
     item.addEventListener("click", () => {
       const type = item.dataset.type;
       if (type === "modal") {
@@ -643,6 +682,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const imgTitle = item.dataset.lightboxTitle || "";
         salesModalImg.src = imgSrc;
         salesModalImg.alt = imgTitle;
+        salesModal.classList.add("show");
         document.body.style.overflow = "hidden";
       }
       if (type === "link") {
@@ -651,52 +691,47 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
-  salesModalClose.addEventListener("click", () => {
-    salesModal.classList.remove("show");
-    document.body.style.overflow = "";
-  });
-  salesModal.addEventListener("click", (e) => {
-    if (e.target === salesModal) {
+
+  if (salesModalClose) {
+    salesModalClose.addEventListener("click", () => {
       salesModal.classList.remove("show");
       document.body.style.overflow = "";
-    }
-  });
+    });
+  }
+  if (salesModal) {
+    salesModal.addEventListener("click", (e) => {
+      if (e.target === salesModal) {
+        salesModal.classList.remove("show");
+        document.body.style.overflow = "";
+      }
+    });
+  }
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
-      salesModal.classList.remove("show");
+      salesModal && salesModal.classList.remove("show");
       document.body.style.overflow = "";
     }
   });
 
   /* ════════════════════════════════════════
-     ★ 네비게이션 — 섹션별 정확한 스크롤 위치
+     네비게이션 — 섹션별 정확한 스크롤
   ════════════════════════════════════════ */
-
-  /* 섹션 ID별 오프셋 설정
-     - aboutSection: nav(80) - about padding-top(40) = 40px 위 여백
-     - 나머지(랜딩 제외): nav(80) + 추가 여백(60) = 140px
-     - landingSection: 기존 방식 유지(scrollIntoView)
-  */
   var NAV_H = 80;
   var SECTION_OFFSET = {
-    aboutSection: NAV_H - 30 /* 40 */,
-    webDesingSection: NAV_H - 90 /* 140 */,
-    appSection: NAV_H - 90 /* 140 */,
-    salesSection: NAV_H - 90 /* 140 */,
-    cardSection: NAV_H - 140 /* 140 */,
+    aboutSection: NAV_H - 30,
+    webDesingSection: NAV_H - 90,
+    appSection: NAV_H - 90,
+    salesSection: NAV_H - 90,
+    cardSection: NAV_H - 140,
   };
 
   function scrollToSection(targetId) {
     var targetEl = document.getElementById(targetId);
     if (!targetEl) return;
-
-    /* 랜딩은 기존 방식 그대로 */
     if (targetId === "landingSection") {
       targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
       return;
     }
-
-    /* 카드 섹션은 별도 트랙 애니메이션 처리 */
     if (targetId === "cardSection") {
       var track = document.getElementById("cardTrack");
       if (track) {
@@ -708,7 +743,6 @@ document.addEventListener("DOMContentLoaded", function () {
       var top =
         targetEl.getBoundingClientRect().top + window.pageYOffset - offset;
       window.scrollTo({ top: top, behavior: "smooth" });
-
       if (track) {
         var checkTimer = null;
         var onScroll = function () {
@@ -736,8 +770,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       return;
     }
-
-    /* 나머지 섹션 — 오프셋 기준으로 정확히 이동 */
     var offset =
       SECTION_OFFSET[targetId] !== undefined ? SECTION_OFFSET[targetId] : NAV_H;
     var top =
@@ -745,7 +777,6 @@ document.addEventListener("DOMContentLoaded", function () {
     window.scrollTo({ top: top, behavior: "smooth" });
   }
 
-  /* 로고 클릭 */
   var navLogo = document.querySelector(".nav-logo");
   if (navLogo) {
     navLogo.addEventListener("click", function (e) {
@@ -761,7 +792,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  /* 네비 링크 클릭 */
   document
     .querySelectorAll(".nav-links a[data-target]")
     .forEach(function (link) {
