@@ -544,25 +544,50 @@ document.addEventListener("DOMContentLoaded", function () {
   })();
 
   /* ════════════════════════════════════════
-     APP float-in
+     APP 섹션 하단 애니메이션
+     - 태그: 왼쪽→오른쪽 순서대로 슥
+     - 설명: opacity 0→1 페이드인
+     - 이미지1: 아래→위 동시 등장
   ════════════════════════════════════════ */
   (function () {
-    var el = document.querySelector(".app-float-in");
-    if (!el) return;
+    var bottomArea = document.querySelector(".app-bottom-area");
+    if (!bottomArea) return;
     var triggered = false;
+
     var obs = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting && !triggered) {
             triggered = true;
-            el.classList.add("app-float-visible");
-            obs.unobserve(entry.target);
+
+            // 1) 태그 왼쪽→오른쪽 슥슥 (CSS transition-delay로 순서 처리)
+            var tags = document.querySelectorAll(".app-deco-tag-new");
+            tags.forEach(function (tag) {
+              tag.classList.add("tag-visible");
+            });
+
+            // 2) 설명 텍스트 opacity 0→1 (태그 마지막 딜레이 0.45s + 여유 0.2s)
+            var desc = document.getElementById("appSectionDesc");
+            if (desc) {
+              setTimeout(function () {
+                desc.classList.add("desc-visible");
+              }, 650);
+            }
+
+            // 3) 이미지1 아래→위 (태그와 동시)
+            var img1 = document.getElementById("appImg1Wrap");
+            if (img1) {
+              img1.classList.add("app-float-visible");
+            }
+
+            obs.disconnect();
           }
         });
       },
-      { threshold: 0.05 },
+      { threshold: 0.15 },
     );
-    obs.observe(el);
+
+    obs.observe(bottomArea);
   })();
 
   /* ════════════════════════════════════════
@@ -642,8 +667,7 @@ document.addEventListener("DOMContentLoaded", function () {
   })();
 
   /* ════════════════════════════════════════
-     SALES 클릭 기능 + 눌리는 효과 (JS)
-     수정 위치: salesClickables 이벤트 리스너
+     SALES 클릭 기능 + 눌리는 효과
   ════════════════════════════════════════ */
   const salesClickables = document.querySelectorAll(".sales-img-clickable");
   const salesModal = document.getElementById("salesModal");
@@ -651,7 +675,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const salesModalClose = document.getElementById("salesModalClose");
 
   salesClickables.forEach((item) => {
-    /* ── 눌리는 효과: mousedown → scale down, mouseup → scale back ── */
     const target =
       item.querySelector(".sales-img-wrap") ||
       item.querySelector(".sales-browser-wrap") ||
@@ -663,13 +686,11 @@ document.addEventListener("DOMContentLoaded", function () {
       target.style.boxShadow = "0 8px 24px rgba(0,0,0,0.14)";
     });
     item.addEventListener("mouseup", () => {
-      // hover 상태로 복귀
       target.style.transition = "transform 0.25s ease, box-shadow 0.25s ease";
       target.style.transform = "translateY(-4px)";
       target.style.boxShadow = "0 24px 60px rgba(0,0,0,0.18)";
     });
     item.addEventListener("mouseleave", () => {
-      // 호버 해제 시 원래 상태
       target.style.transition = "transform 0.35s ease, box-shadow 0.35s ease";
       target.style.transform = "translateY(0)";
       target.style.boxShadow = "0 16px 56px rgba(0,0,0,0.14)";
