@@ -915,7 +915,7 @@ section {
   font-family: var(--font-nav);
   font-size: 15px;
   font-weight: 700;
-  color: #0650a4;
+  color: #0650a4b4;
   background: #f1f1f1;
   padding: 14px 34px;
   border-radius: 999px;
@@ -1504,7 +1504,7 @@ section {
   font-family: var(--font-nav);
   font-size: 15px;
   font-weight: 700;
-  color: #d8bac0;
+  color: #d8bac0ce;
   background: #f1f1f1;
   padding: 14px 34px;
   border-radius: 999px;
