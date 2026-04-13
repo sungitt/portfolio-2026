@@ -743,7 +743,7 @@ document.addEventListener("DOMContentLoaded", function () {
     webDesingSection: NAV_H - 90,
     appSection: NAV_H - 90,
     salesSection: NAV_H - 90,
-    cardSection: NAV_H - 140,
+    cardSection: NAV_H - 90,
   };
 
   function scrollToSection(targetId) {
