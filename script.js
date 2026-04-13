@@ -569,9 +569,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // 2) 설명 텍스트 opacity 0→1 (태그 마지막 딜레이 0.45s + 여유 0.2s)
             var desc = document.getElementById("appSectionDesc");
             if (desc) {
-              setTimeout(function () {
-                desc.classList.add("desc-visible");
-              }, 650);
+              desc.classList.add("desc-visible");
             }
 
             // 3) 이미지1 아래→위 (태그와 동시)

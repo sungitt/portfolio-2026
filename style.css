@@ -915,16 +915,18 @@ section {
   font-family: var(--font-nav);
   font-size: 15px;
   font-weight: 700;
-  color: #fff;
-  background: #111;
+  color: #0650a4;
+  background: #f1f1f1;
   padding: 14px 34px;
   border-radius: 999px;
   text-decoration: none;
   width: fit-content;
   transition: background 0.2s;
+  border: 1px solid #bbb;
 }
 .landing-btn:hover {
   background: #0650a4;
+  color: #fff;
 }
 .landing-right-image {
   flex: 0 0 60%;
@@ -1496,6 +1498,24 @@ section {
   border: 1.5px solid #bbb;
   padding: 5px 14px;
   border-radius: 999px;
+}
+.sales-rear-btn {
+  display: inline-block;
+  font-family: var(--font-nav);
+  font-size: 15px;
+  font-weight: 700;
+  color: #d8bac0;
+  background: #f1f1f1;
+  padding: 14px 34px;
+  border-radius: 999px;
+  text-decoration: none;
+  width: fit-content;
+  transition: background 0.2s;
+  border: 1px solid #bbb;
+}
+.sales-rear-btn:hover {
+  background: #d8bac0;
+  color: #fff;
 }
 .sales-bottom-text {
   font-family: var(--font-han);
