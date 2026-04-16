@@ -181,9 +181,10 @@
     overflow: hidden;
     z-index: 0;
     pointer-events: none;
+    border: 0.5px;
   }
   .drop-item.type-text {
-    font-size: 15% !important;
+    font-size: 25% !important;
   }
   .drop-item.type-image img {
     max-width: 25px !important;
@@ -375,13 +376,14 @@
   .webDesing-title {
     font-size: clamp(20px, 5.5vw, 28px);
   }
-  .webDesing-tags {
-    gap: 3px;
-  }
   .webDesing-tag {
     font-size: 5px;
     padding: 1px 4px;
+    border: 0.5px;
     justify-content: center;
+  }
+  .webDesing-tags {
+    gap: 3px;
   }
   .webDesing-desc {
     padding: 8px 0;
@@ -603,6 +605,7 @@
   .landing-tag {
     font-size: clamp(5px, 2.5vw, 5px);
     padding: 1px 4px;
+    border: 0.5px;
   }
   .landing-btn {
     font-size: clamp(7px, 3vw, 7px);
@@ -676,7 +679,7 @@
   }
   .app-info-right {
     flex-direction: column;
-    gap: 5px;
+    gap: 3px;
     align-items: flex-start;
   }
   /* 이미지2,3 스택 표시 */
@@ -744,6 +747,7 @@
   .app-tag {
     font-size: clamp(5px, 1vw, 8px);
     padding: 1px 4px;
+    border: 0.5px;
   }
 
   /* 하단: 데코태그(세로)+desc(세로) 왼쪽 / 목업이미지 오른쪽 */
@@ -776,6 +780,7 @@
     min-width: 55px;
     font-size: clamp(6px, 0.5vw, 8px);
     padding: 1px 2px;
+    border: 0.5px;
     /* border-radius: 8px; */
   }
   .app-deco-icon {
@@ -866,6 +871,7 @@
     font-size: 5px;
     padding: 1px 4px;
     justify-content: center;
+    border: 0.5px;
   }
   .sales-bottom-text {
     font-size: clamp(8px, 2vw, 10px);
@@ -947,6 +953,7 @@
     font-size: 5px;
     padding: 1px 4px;
     margin-top: -7px;
+    border: 0.5px;
   }
   .card-bottom-text {
     font-size: clamp(9px, 2.2vw, 11px);
@@ -981,11 +988,15 @@
      FOOTER
   ════════════════════════ */
   .site-footer {
-    padding: 12px var(--pad) 16px;
+    padding: 12px var(--pad) 12px;
     height: auto;
-    min-height: auto;
+    margin-top: 50px;
+    margin-bottom: 12px;
+    min-height: 230px;
     align-items: flex-start;
     justify-content: center;
+    z-index: 0;
+    overflow: visible;
   }
   .footer-inner {
     max-width: 100%;
@@ -995,14 +1006,15 @@
     width: 100%;
     max-width: 100%;
     padding: 20px 20px;
-    border-radius: 18px;
+    border-radius: 15px;
     flex-direction: column;
+    position: absolute;
     align-items: flex-start;
     gap: 10px;
     height: auto;
-    opacity: 1 !important;
     transform: none !important;
     transition: none !important;
+    z-index: 10;
   }
   .footer-card-left {
     height: auto;
@@ -1052,10 +1064,26 @@
   .footer-copy br {
     display: none;
   }
-  .footer-lottie {
+  /* 왼쪽 로티만 표시, 오른쪽 숨김 */
+  .footer-lottie.left {
+    width: 200%;
+    height: 200%;
+    margin-top: -150px;
+    display: flex;
+    visibility: visible !important;
+    position: relative;
+    bottom: auto;
+    left: auto;
+    /* overflow: hidden; */
+    z-index: 1;
+  }
+  .footer-lottie.left dotlottie-wc {
+    width: clamp(150px, 80vw, 250px);
+    height: auto !important;
+  }
+  .footer-lottie.right {
     display: none;
   }
-
   /* ════════════════════════
      라이트박스 / 모달
   ════════════════════════ */
