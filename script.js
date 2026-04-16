@@ -235,7 +235,6 @@ document.addEventListener("DOMContentLoaded", function () {
         height: 65,
         rotate: 13,
       },
-      { type: "text", text: "GOgaba", fontSize: 26, color: "#FE7901" },
       {
         type: "image",
         src: "images/gogaba.png",
@@ -254,6 +253,27 @@ document.addEventListener("DOMContentLoaded", function () {
       {
         type: "image",
         src: "images/Fdrop.png",
+        width: 110,
+        height: 80,
+        rotate: -13,
+      },
+      {
+        type: "image",
+        src: "images/'단순'.png",
+        width: 110,
+        height: 80,
+        rotate: -13,
+      },
+      {
+        type: "image",
+        src: "images/피움 가로.png",
+        width: 110,
+        height: 80,
+        rotate: -13,
+      },
+      {
+        type: "image",
+        src: "images/로고 최종 0227.png",
         width: 110,
         height: 80,
         rotate: -13,
