@@ -1,0 +1,300 @@
+/* ════════════════════════════════════════════════════════
+   TABLET.CSS  —  태블릿(768px ~ 1024px) 전용
+   style.css 아래, responsive.css 위에 링크하세요
+   <link rel="stylesheet" href="tablet.css" />
+════════════════════════════════════════════════════════ */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* ══ 공통 변수 재정의 ══ */
+  :root {
+    --pad: 40px;
+    --nav-h: 70px;
+  }
+
+  /* ════════════════════════
+     NAV
+  ════════════════════════ */
+  .nav-inner {
+    padding: 0 var(--pad);
+  }
+  .nav-logo {
+    font-size: 22px;
+  }
+  .nav-links {
+    gap: 20px;
+  }
+  .nav-links a {
+    font-size: 14px;
+  }
+
+  /* ════════════════════════
+     HERO
+  ════════════════════════ */
+  :root {
+    --font-size-hero: 90px;
+  }
+
+  /* ════════════════════════
+     공통 섹션
+  ════════════════════════ */
+  .section-inner {
+    padding: 60px var(--pad);
+  }
+  .section-title-wrap h2 {
+    font-size: 36px;
+  }
+
+  /* ════════════════════════
+     ABOUT
+  ════════════════════════ */
+  .about-section {
+    padding: 40px var(--pad) 80px;
+  }
+  .about-content {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .about-left {
+    flex: none;
+    width: 100%;
+  }
+  .about-right {
+    flex: none;
+    width: 100%;
+    padding-top: 0;
+  }
+  .about-profile-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0 30px;
+  }
+  .about-greeting {
+    font-size: 22px;
+  }
+  .about-desc {
+    font-size: 15px;
+  }
+  .about-profile-value {
+    font-size: 15px;
+  }
+
+  /* ════════════════════════
+     WEB DESIGN
+  ════════════════════════ */
+  #webDesingSection .section-inner {
+    padding: 50px var(--pad);
+  }
+  .webDesing-layout {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .webDesing-left {
+    flex: none;
+    width: 100%;
+  }
+  .webDesing-desc {
+    padding: 10px 0;
+    font-size: 15px;
+  }
+  .webDesing-right {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .webDesing-card {
+    width: 100%;
+  }
+  .webDesing-img-wrap {
+    aspect-ratio: 16/9;
+  }
+  .webDesing-title {
+    font-size: 26px;
+  }
+  /* 기여도 설명 박스 */
+  .webDesing-contrib-note {
+    margin-top: 12px;
+  }
+  .webDesing-contrib-note p {
+    font-size: 12px;
+  }
+
+  /* ════════════════════════
+     LANDING
+  ════════════════════════ */
+  .landing-left-inner h2 {
+    font-size: 38px;
+  }
+  .landing-left-inner {
+    padding-left: var(--pad);
+    padding-top: 80px;
+  }
+  .landing-cloud {
+    left: var(--pad);
+  }
+
+  /* ════════════════════════
+     APP
+  ════════════════════════ */
+  #appSection .section-inner {
+    padding: 50px var(--pad);
+  }
+  .app-top-row {
+    gap: 30px;
+  }
+  .app-mockup-wrap {
+    width: 240px;
+    height: 490px;
+    left: 0;
+    border-radius: 36px;
+  }
+  .app-mockup-frame {
+    left: 0;
+    width: 108%;
+  }
+  .app-info-col {
+    margin-left: 260px;
+    margin-top: 40px;
+  }
+  .app-img3 img {
+    width: 220px;
+    height: 300px;
+  }
+  .app-img2 {
+    width: 110px;
+    height: 110px;
+    left: 80px;
+  }
+  .app-text-title {
+    font-size: 26px;
+  }
+  .app-text-desc {
+    font-size: 15px;
+  }
+
+  /* 하단 영역 태블릿 레이아웃 */
+  .app-bottom-area {
+    flex-wrap: wrap;
+    margin-top: 40px;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  /* 기여도 글자: 왼쪽 절반 */
+  .app-contrib-note {
+    order: 1;
+    padding-left: 0;
+    flex: 0 0 calc(50% - 10px);
+    padding-bottom: 0;
+  }
+  .app-contrib-note-text {
+    font-size: 13px;
+  }
+  /* 데코태그: 기여도 글자 오른쪽 */
+  .app-bottom-left {
+    order: 2;
+    padding-left: 20px;
+    flex: 0 0 calc(50% - 10px);
+  }
+  .app-deco-tag-new {
+    width: 160px;
+    font-size: 13px;
+  }
+  /* 이미지1: 두 번째 줄 왼쪽 */
+  .app-img1-row {
+    order: 3;
+    flex: 0 0 55%;
+    padding-right: 20px;
+    margin-top: 0;
+    justify-content: flex-start;
+  }
+  .app-img1-wrap img {
+    max-width: 100%;
+    width: 100%;
+  }
+  /* 데코 설명 글자: 두 번째 줄 오른쪽 */
+  .app-section-desc {
+    order: 4;
+    flex: 1;
+    padding-right: 0;
+    align-self: flex-end;
+    position: static;
+    margin-left: 0;
+  }
+  .app-section-desc p {
+    font-size: 13px;
+  }
+
+  /* ════════════════════════
+     SALES
+  ════════════════════════ */
+  #salesSection .section-inner {
+    padding: 50px var(--pad);
+  }
+  .sales-list {
+    gap: 80px;
+  }
+  .sales-item,
+  .sales-item.reverse {
+    gap: 40px;
+  }
+  .sales-img-wrap,
+  .sales-browser-wrap {
+    flex: 0 0 55%;
+    width: 55%;
+  }
+  .sales-cafe24-row .sales-browser-wrap {
+    flex: 0 0 55%;
+    width: 55%;
+  }
+  .sales-title {
+    font-size: 24px;
+  }
+  .sales-bottom-text {
+    font-size: 14px;
+    margin-top: 30px;
+  }
+
+  /* ════════════════════════
+     CARD
+     태블릿: card-popup 숨김
+  ════════════════════════ */
+  .card-popup {
+    display: none !important;
+  }
+  .card-img-wrap {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3/4;
+  }
+  .card-item {
+    flex: 0 0 calc((100% - 60px) / 3);
+  }
+  .card-track {
+    gap: 30px;
+  }
+  .card-label-title {
+    font-size: 18px;
+  }
+  .card-bottom-text {
+    font-size: 13px;
+    margin-top: 40px;
+  }
+
+  /* ════════════════════════
+     FOOTER
+  ════════════════════════ */
+  .site-footer {
+    padding: 60px var(--pad) 0;
+    height: auto;
+    min-height: 500px;
+  }
+  .footer-card {
+    width: 100%;
+    max-width: 700px;
+    padding: 0 40px;
+    height: 260px;
+  }
+  .footer-name {
+    font-size: 34px;
+  }
+  .footer-card-divider {
+    margin: 0 36px;
+  }
+}

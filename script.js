@@ -33,12 +33,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var portfolioSection = document.getElementById("portfolioSection");
   var container = document.getElementById("portfolioLine");
-  var FS =
-    parseInt(
-      getComputedStyle(document.documentElement).getPropertyValue(
-        "--font-size-hero",
-      ),
-    ) || 150;
+
+  /* CSS 변수 안전하게 읽기 */
+  var FS = 150;
+  try {
+    var rawVal = getComputedStyle(document.documentElement)
+      .getPropertyValue("--font-size-hero")
+      .trim();
+    var parsed = parseInt(rawVal, 10);
+    if (!isNaN(parsed) && parsed > 0) FS = parsed;
+  } catch (e) {
+    FS = 150;
+  }
 
   var widthCache = {};
   function getWidth(ch) {
@@ -432,7 +438,7 @@ document.addEventListener("DOMContentLoaded", function () {
   })();
 
   /* ════════════════════════════════════════
-     ABOUT 스킬바 애니메이션
+     ABOUT 스킬바
   ════════════════════════════════════════ */
   (function () {
     var section = document.getElementById("aboutSection");
@@ -454,7 +460,7 @@ document.addEventListener("DOMContentLoaded", function () {
   })();
 
   /* ════════════════════════════════════════
-     WEB DESING 기여도 바 애니메이션
+     WEB DESING 기여도 바
   ════════════════════════════════════════ */
   (function () {
     var section = document.getElementById("webDesingSection");
@@ -488,7 +494,7 @@ document.addEventListener("DOMContentLoaded", function () {
   })();
 
   /* ════════════════════════════════════════
-     LANDING 오른쪽 자동 스크롤
+     LANDING 자동 스크롤
   ════════════════════════════════════════ */
   (function () {
     var wrap = document.getElementById("landingAutoScroll");
@@ -517,9 +523,8 @@ document.addEventListener("DOMContentLoaded", function () {
                   currentY -= speed * 2;
                   wrap.style.transform =
                     "translateY(-" + Math.max(0, currentY) + "px)";
-                  if (currentY > 0) {
-                    rewindRaf = requestAnimationFrame(rewind);
-                  } else {
+                  if (currentY > 0) rewindRaf = requestAnimationFrame(rewind);
+                  else {
                     currentY = 0;
                     isPaused = false;
                   }
@@ -540,11 +545,8 @@ document.addEventListener("DOMContentLoaded", function () {
     rightBox.addEventListener("mouseleave", function () {
       isPaused = false;
     });
-    if (img.complete && img.naturalWidth) {
-      startScroll();
-    } else {
-      img.addEventListener("load", startScroll);
-    }
+    if (img.complete && img.naturalWidth) startScroll();
+    else img.addEventListener("load", startScroll);
     var obs = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (e) {
@@ -565,38 +567,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /* ════════════════════════════════════════
      APP 섹션 하단 애니메이션
-     - 태그: 왼쪽→오른쪽 순서대로 슥
-     - 설명: opacity 0→1 페이드인
-     - 이미지1: 아래→위 동시 등장
+     (기여도 글자 + 태그 + desc + 이미지1)
   ════════════════════════════════════════ */
   (function () {
     var bottomArea = document.querySelector(".app-bottom-area");
     if (!bottomArea) return;
     var triggered = false;
-
     var obs = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting && !triggered) {
             triggered = true;
 
-            // 1) 태그 왼쪽→오른쪽 슥슥 (CSS transition-delay로 순서 처리)
+            /* 기여도 글자 */
+            var note = document.getElementById("appContribNote");
+            if (note) note.classList.add("note-visible");
+
+            /* 데코태그 */
             var tags = document.querySelectorAll(".app-deco-tag-new");
             tags.forEach(function (tag) {
               tag.classList.add("tag-visible");
             });
 
-            // 2) 설명 텍스트 opacity 0→1 (태그 마지막 딜레이 0.45s + 여유 0.2s)
+            /* 설명 텍스트 */
             var desc = document.getElementById("appSectionDesc");
-            if (desc) {
-              desc.classList.add("desc-visible");
-            }
+            if (desc) desc.classList.add("desc-visible");
 
-            // 3) 이미지1 아래→위 (태그와 동시)
+            /* 이미지1 */
             var img1 = document.getElementById("appImg1Wrap");
-            if (img1) {
-              img1.classList.add("app-float-visible");
-            }
+            if (img1) img1.classList.add("app-float-visible");
 
             obs.disconnect();
           }
@@ -604,12 +603,11 @@ document.addEventListener("DOMContentLoaded", function () {
       },
       { threshold: 0.15 },
     );
-
     obs.observe(bottomArea);
   })();
 
   /* ════════════════════════════════════════
-     APP 영상 opacity 0→1
+     APP 영상 opacity
   ════════════════════════════════════════ */
   (function () {
     var video = document.getElementById("appMockupVideo");
@@ -685,75 +683,76 @@ document.addEventListener("DOMContentLoaded", function () {
   })();
 
   /* ════════════════════════════════════════
-     SALES 클릭 기능 + 눌리는 효과
+     SALES 모달
   ════════════════════════════════════════ */
-  const salesClickables = document.querySelectorAll(".sales-img-clickable");
-  const salesModal = document.getElementById("salesModal");
-  const salesModalImg = document.getElementById("salesModalImg");
-  const salesModalClose = document.getElementById("salesModalClose");
+  var salesModal = document.getElementById("salesModal");
+  var salesModalInner =
+    document.getElementById("salesModalInner") ||
+    (salesModal ? salesModal.querySelector(".sales-modal-inner") : null);
+  var salesModalClose = document.getElementById("salesModalClose");
 
-  salesClickables.forEach((item) => {
-    const target =
-      item.querySelector(".sales-img-wrap") ||
-      item.querySelector(".sales-browser-wrap") ||
-      item;
-
-    item.addEventListener("mousedown", () => {
-      target.style.transition = "transform 0.1s ease, box-shadow 0.1s ease";
-      target.style.transform = "translateY(-1px) scale(0.985)";
-      target.style.boxShadow = "0 8px 24px rgba(0,0,0,0.14)";
+  document.querySelectorAll(".sales-img-clickable").forEach(function (item) {
+    item.addEventListener("mousedown", function () {
+      this.style.transition = "transform 0.1s ease, box-shadow 0.1s ease";
+      this.style.transform = "translateY(-1px) scale(0.985)";
+      this.style.boxShadow = "0 8px 24px rgba(0,0,0,0.14)";
     });
-    item.addEventListener("mouseup", () => {
-      target.style.transition = "transform 0.25s ease, box-shadow 0.25s ease";
-      target.style.transform = "translateY(-4px)";
-      target.style.boxShadow = "0 24px 60px rgba(0,0,0,0.18)";
+    item.addEventListener("mouseup", function () {
+      this.style.transition = "transform 0.25s ease, box-shadow 0.25s ease";
+      this.style.transform = "translateY(-4px)";
+      this.style.boxShadow = "0 24px 60px rgba(0,0,0,0.18)";
     });
-    item.addEventListener("mouseleave", () => {
-      target.style.transition = "transform 0.35s ease, box-shadow 0.35s ease";
-      target.style.transform = "translateY(0)";
-      target.style.boxShadow = "0 16px 56px rgba(0,0,0,0.14)";
+    item.addEventListener("mouseleave", function () {
+      this.style.transition = "transform 0.35s ease, box-shadow 0.35s ease";
+      this.style.transform = "translateY(0)";
+      this.style.boxShadow = "0 16px 56px rgba(0,0,0,0.14)";
     });
-
-    item.addEventListener("click", () => {
-      const type = item.dataset.type;
+    item.addEventListener("click", function () {
+      var type = this.dataset.type;
       if (type === "modal") {
-        const imgSrc = item.dataset.lightboxSrc;
-        const imgTitle = item.dataset.lightboxTitle || "";
-        salesModalImg.src = imgSrc;
-        salesModalImg.alt = imgTitle;
-        salesModal.classList.add("show");
-        document.body.style.overflow = "hidden";
+        var imgSrc = this.dataset.lightboxSrc || "";
+        var imgTitle = this.dataset.lightboxTitle || "";
+        if (salesModal && salesModalInner) {
+          salesModalInner.innerHTML =
+            '<img src="' +
+            imgSrc +
+            '" alt="' +
+            imgTitle +
+            '" style="max-width:100%;max-height:88vh;border-radius:14px;box-shadow:0 20px 80px rgba(0,0,0,0.35);background:#fff;" />';
+          salesModal.classList.add("show");
+          document.body.style.overflow = "hidden";
+        }
       }
       if (type === "link") {
-        const link = item.dataset.link;
+        var link = this.dataset.link;
         if (link) window.open(link, "_blank", "noopener,noreferrer");
       }
     });
   });
 
   if (salesModalClose) {
-    salesModalClose.addEventListener("click", () => {
+    salesModalClose.addEventListener("click", function () {
       salesModal.classList.remove("show");
       document.body.style.overflow = "";
     });
   }
   if (salesModal) {
-    salesModal.addEventListener("click", (e) => {
+    salesModal.addEventListener("click", function (e) {
       if (e.target === salesModal) {
         salesModal.classList.remove("show");
         document.body.style.overflow = "";
       }
     });
   }
-  document.addEventListener("keydown", (e) => {
+  document.addEventListener("keydown", function (e) {
     if (e.key === "Escape") {
-      salesModal && salesModal.classList.remove("show");
+      if (salesModal) salesModal.classList.remove("show");
       document.body.style.overflow = "";
     }
   });
 
   /* ════════════════════════════════════════
-     네비게이션 — 섹션별 정확한 스크롤
+     네비게이션 스크롤
   ════════════════════════════════════════ */
   var NAV_H = 80;
   var SECTION_OFFSET = {
@@ -845,7 +844,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
   /* ════════════════════════════════════════
-     Landing — View Project 팝업
+     Landing View Project
   ════════════════════════════════════════ */
   var viewBtn = document.getElementById("landingViewBtn");
   if (viewBtn) {
@@ -853,15 +852,10 @@ document.addEventListener("DOMContentLoaded", function () {
       e.preventDefault();
       var imgEl = document.getElementById("landingImg");
       var imgSrc = imgEl ? imgEl.src : "";
-      var html = [
-        '<!doctype html><html lang="ko"><head>',
-        '<meta charset="UTF-8">',
-        "<title>View Project</title>",
-        "<style>*{margin:0;padding:0;box-sizing:border-box;}body{background:#fff;display:flex;flex-direction:column;align-items:center;}img{width:1920px;max-width:100%;height:auto;display:block;}</style>",
-        "</head><body>",
-        '<img src="' + imgSrc + '" alt="프로젝트 이미지">',
-        "</body></html>",
-      ].join("");
+      var html =
+        '<!doctype html><html lang="ko"><head><meta charset="UTF-8"><title>View Project</title><style>*{margin:0;padding:0;box-sizing:border-box;}body{background:#fff;display:flex;flex-direction:column;align-items:center;}img{width:1920px;max-width:100%;height:auto;display:block;}</style></head><body><img src="' +
+        imgSrc +
+        '" alt="프로젝트 이미지"></body></html>';
       var popup = window.open(
         "",
         "_blank",
@@ -938,7 +932,7 @@ document.addEventListener("DOMContentLoaded", function () {
   })();
 
   /* ════════════════════════════════════════
-     FOOTER 카드 슬라이드업
+     FOOTER 슬라이드업
   ════════════════════════════════════════ */
   (function () {
     var card = document.getElementById("footerCard");
@@ -958,7 +952,7 @@ document.addEventListener("DOMContentLoaded", function () {
   })();
 
   /* ════════════════════════════════════════
-     라이트박스 — 카드 + 세일즈 공용
+     라이트박스 — 카드 전용
   ════════════════════════════════════════ */
   (function () {
     var overlay = document.getElementById("lightboxOverlay");
@@ -969,7 +963,8 @@ document.addEventListener("DOMContentLoaded", function () {
     function open(src, title, sub) {
       imgEl.src = src;
       imgEl.alt = title || "";
-      caption.textContent = title ? title + (sub ? "  ·  " + sub : "") : "";
+      if (caption)
+        caption.textContent = title ? title + (sub ? "  ·  " + sub : "") : "";
       if (imgEl.complete && imgEl.naturalWidth) show();
       else imgEl.onload = show;
     }
@@ -984,7 +979,7 @@ document.addEventListener("DOMContentLoaded", function () {
         imgEl.src = "";
       }, 380);
     }
-    closeBtn.addEventListener("click", close);
+    if (closeBtn) closeBtn.addEventListener("click", close);
     overlay.addEventListener("click", function (e) {
       if (e.target === overlay) close();
     });
@@ -1000,13 +995,6 @@ document.addEventListener("DOMContentLoaded", function () {
             this.getAttribute("data-title"),
             this.getAttribute("data-sub"),
           );
-      });
-    });
-    document.querySelectorAll(".sales-img-clickable").forEach(function (el) {
-      el.addEventListener("click", function () {
-        var src = this.getAttribute("data-lightbox-src");
-        var title = this.getAttribute("data-lightbox-title") || "";
-        if (src) open(src, title, "");
       });
     });
   })();

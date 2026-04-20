@@ -35,14 +35,12 @@
   }
 
   /* ══════════════════════════════
-     2. HERO — % 기반 자동 애니메이션
-     모바일: 페이지 로드 후 세로획 낙하 → 검은색으로 채워짐
+     2. HERO 모바일 애니메이션
   ══════════════════════════════ */
   (function () {
     var portfolioSection = document.getElementById("portfolioSection");
     if (!portfolioSection) return;
 
-    // 히어로 글자 전체를 화면 너비에 맞게 스케일 조정
     function scaleHeroLine() {
       var line = document.getElementById("portfolioLine");
       if (!line) return;
@@ -54,13 +52,11 @@
       }
     }
 
-    // 모바일 히어로 애니메이션: brand-col 낙하 → fill-letter 채우기
     function runMobileHeroAnim() {
       var brandCols = portfolioSection.querySelectorAll(".brand-col");
       var fillLetters = portfolioSection.querySelectorAll(".fill-letter");
       var pLetters = portfolioSection.querySelectorAll(".p-letter");
 
-      // 1단계: brand-col 아래로 낙하 + 페이드 아웃
       brandCols.forEach(function (col) {
         col.style.transition =
           "transform 0.6s cubic-bezier(0.22,1,0.36,1), opacity 0.35s ease 0.35s";
@@ -71,8 +67,6 @@
         pl.style.transition = "opacity 0.3s ease 0.15s";
         pl.style.opacity = "0";
       });
-
-      // 2단계: 0.6초 후 fill-letter 위에서 아래로 채워짐
       setTimeout(function () {
         fillLetters.forEach(function (fl, i) {
           fl.style.opacity = "1";
@@ -85,7 +79,6 @@
       }, 650);
     }
 
-    // 폰트 로드 후 스케일 재계산
     if (document.fonts && document.fonts.ready) {
       document.fonts.ready.then(function () {
         scaleHeroLine();
@@ -102,8 +95,6 @@
 
   /* ══════════════════════════════
      3. ABOUT 캐러셀
-     슬라이드0: 소개 + 스킬바
-     슬라이드1: 프로필
   ══════════════════════════════ */
   var aboutSection = document.getElementById("aboutSection");
   if (aboutSection) {
@@ -138,7 +129,6 @@
     wrap.className = "about-carousel-wrap";
     var track = document.createElement("div");
     track.className = "about-carousel-track";
-
     slides.forEach(function (s) {
       var slide = document.createElement("div");
       slide.className = "about-carousel-slide";
@@ -170,21 +160,15 @@
       dotEls.forEach(function (d, i) {
         d.classList.toggle("active", i === curAbout);
       });
-      if (slides[curAbout].type === "intro") {
-        setTimeout(animateSkillBars, 80);
-      }
+      if (slides[curAbout].type === "intro") setTimeout(animateSkillBars, 80);
     }
-
     function animateSkillBars() {
       track.querySelectorAll(".mob-skill-bar").forEach(function (bar) {
         bar.style.width = (bar.getAttribute("data-pct") || "0") + "%";
       });
     }
-
-    // 첫 슬라이드 스킬바
     setTimeout(animateSkillBars, 400);
 
-    // 터치 스와이프
     var aStartX = 0;
     track.addEventListener(
       "touchstart",
@@ -206,13 +190,11 @@
 
   /* ══════════════════════════════
      4. tags-stage 드롭 아이템 크기 패치
-     (낙하 아이템이 배경으로 보이도록)
   ══════════════════════════════ */
   (function () {
     var stage = document.getElementById("tagsStage");
     if (!stage) return;
     var SCALE = 0.5;
-
     function patchDropItem(el) {
       var imgs = el.querySelectorAll("img");
       imgs.forEach(function (img) {
@@ -223,7 +205,6 @@
         img.style.maxWidth = "none";
       });
     }
-
     var observer = new MutationObserver(function (mutations) {
       mutations.forEach(function (mutation) {
         mutation.addedNodes.forEach(function (node) {
@@ -243,6 +224,7 @@
 
   /* ══════════════════════════════
      5. WEB DESIGN 카드 스와이퍼
+     (contrib-note도 카드 안에 포함)
   ══════════════════════════════ */
   var wdSection = document.getElementById("webDesingSection");
   if (wdSection) {
@@ -258,6 +240,7 @@
           { name: "Photoshop · Illustrator", pct: 60 },
           { name: "VSC", pct: 40 },
         ],
+        note: "팀 프로젝트에서 전체 디자인 방향 설정과 히어로 섹션 비주얼을 담당하였으며, 반응형 레이아웃 구현 및 CSS 스와이퍼 기능 개발에 기여하였습니다.",
       },
       {
         title: "고가바 - 새로운 서비스",
@@ -270,6 +253,7 @@
           { name: "Photoshop · Illustrator", pct: 70 },
           { name: "VSC", pct: 30 },
         ],
+        note: "서비스 플랫폼 UI 전반의 디자인을 주도하였으며, 브랜드 아이덴티티 구축과 랜딩 페이지 히어로 영역 디자인을 담당하였습니다. 스와이퍼 인터랙션 기능 구현에도 참여하였습니다.",
       },
     ];
 
@@ -298,6 +282,11 @@
         })
         .join("");
 
+      /* contrib-note HTML */
+      var noteHtml = d.note
+        ? '<div class="webDesing-contrib-note"><p>' + d.note + "</p></div>"
+        : "";
+
       slide.innerHTML =
         '<div class="mob-wd-card">' +
         '<a class="mob-wd-img-wrap" href="' +
@@ -311,8 +300,7 @@
         '<div class="mob-wd-overlay"><span class="mob-wd-open-btn">새탭으로 보기</span></div>' +
         "</a>" +
         '<div class="mob-wd-body">' +
-        '<div class="mob-wd-title-row">' +
-        '<span class="mob-wd-title">' +
+        '<div class="mob-wd-title-row"><span class="mob-wd-title">' +
         d.title +
         "</span>" +
         '<div class="mob-wd-links">' +
@@ -325,7 +313,9 @@
         "</div></div>" +
         '<div class="mob-wd-contrib">' +
         barsHtml +
-        "</div></div></div>";
+        noteHtml +
+        "</div>" +
+        "</div></div>";
       wdTrack.appendChild(slide);
     });
     wdWrap.appendChild(wdTrack);
@@ -344,6 +334,14 @@
     });
 
     var wdInner = wdSection.querySelector(".section-inner");
+
+    /* margin-top 동적 계산 */
+    var wdLeft = wdSection.querySelector(".webDesing-left");
+    if (wdLeft) {
+      var leftH = wdLeft.offsetHeight;
+      wdWrap.style.marginTop = "-" + leftH + "px";
+    }
+
     wdInner.appendChild(wdWrap);
     wdInner.appendChild(wdDots);
 
@@ -385,20 +383,24 @@
   }
 
   /* ══════════════════════════════
-     6. APP 섹션 — 꽃 이미지 회전 유지 + 하단 태그/desc 즉시 표시
+     6. APP 섹션 — 모바일 즉시 표시
   ══════════════════════════════ */
   (function () {
-    // 모바일에서 app-deco-tag-new 애니메이션 초기화 (CSS로 이미 처리)
-    // app-img1-wrap float 애니메이션 활성화
     var img1 = document.getElementById("appImg1Wrap");
-    if (img1) {
-      img1.classList.add("app-float-visible");
-    }
-    // desc 표시
+    if (img1) img1.classList.add("app-float-visible");
+
     var desc = document.getElementById("appSectionDesc");
-    if (desc) {
-      desc.classList.add("desc-visible");
-    }
+    if (desc) desc.classList.add("desc-visible");
+
+    /* 기여도 노트도 즉시 표시 */
+    var note = document.getElementById("appContribNote");
+    if (note) note.classList.add("note-visible");
+
+    /* 데코태그 즉시 표시 (모바일에서는 CSS에서 transition:none 처리) */
+    var tags = document.querySelectorAll(".app-deco-tag-new");
+    tags.forEach(function (tag) {
+      tag.classList.add("tag-visible");
+    });
   })();
 
   /* ══════════════════════════════
@@ -407,15 +409,13 @@
   var cardSection = document.getElementById("cardSection");
   var cardTrack = document.getElementById("cardTrack");
   if (cardSection && cardTrack) {
-    // 원본 카드 트랙 숨기기
     cardTrack.classList.add("card-arrived");
     cardTrack.style.cssText =
       "transform:none!important;transition:none!important;display:none;";
 
     var cardItems = Array.from(cardTrack.querySelectorAll(".card-item"));
-    var totalCards = cardItems.length;
     var pages = [];
-    for (var ci = 0; ci < totalCards; ci += 2) {
+    for (var ci = 0; ci < cardItems.length; ci += 2) {
       pages.push(cardItems.slice(ci, ci + 2));
     }
 
@@ -428,6 +428,10 @@
     cTrack.style.cssText =
       "display:flex;transition:transform .42s cubic-bezier(.22,1,.36,1);will-change:transform;";
 
+    var lbOverlay = document.getElementById("lightboxOverlay");
+    var lbImg = document.getElementById("lightboxImg");
+    var lbCap = document.getElementById("lightboxCaption");
+
     pages.forEach(function (pg) {
       var page = document.createElement("div");
       page.style.cssText =
@@ -435,27 +439,22 @@
       pg.forEach(function (item) {
         var clone = item.cloneNode(true);
         clone.style.flex = "1";
+        /* 팝업 요소 확실히 제거 */
+        var popup = clone.querySelector(".card-popup");
+        if (popup) popup.remove();
         clone.addEventListener("click", function () {
           var src = item.getAttribute("data-img");
           var ttl = item.getAttribute("data-title");
-          if (src) {
-            var lbOverlay = document.getElementById("lightboxOverlay");
-            var lbImg = document.getElementById("lightboxImg");
-            var lbCap = document.getElementById("lightboxCaption");
-            if (lbOverlay && lbImg) {
-              lbImg.src = src;
-              lbImg.alt = ttl || "";
-              if (lbCap) lbCap.textContent = ttl || "";
-              if (lbImg.complete && lbImg.naturalWidth) {
-                lbOverlay.classList.add("lb-open");
-                document.body.style.overflow = "hidden";
-              } else {
-                lbImg.onload = function () {
-                  lbOverlay.classList.add("lb-open");
-                  document.body.style.overflow = "hidden";
-                };
-              }
+          if (src && lbOverlay && lbImg) {
+            lbImg.src = src;
+            lbImg.alt = ttl || "";
+            if (lbCap) lbCap.textContent = ttl || "";
+            function showLb() {
+              lbOverlay.classList.add("lb-open");
+              document.body.style.overflow = "hidden";
             }
+            if (lbImg.complete && lbImg.naturalWidth) showLb();
+            else lbImg.onload = showLb;
           }
         });
         page.appendChild(clone);
@@ -514,22 +513,18 @@
   }
 
   /* ══════════════════════════════
-     8. FOOTER 카드 — 모바일에서 즉시 표시
+     8. FOOTER 카드
   ══════════════════════════════ */
   (function () {
     var card = document.getElementById("footerCard");
-    if (card) {
-      // CSS에서 opacity:1, transform:none으로 오버라이드 했지만
-      // JS 클래스도 추가해서 확실히 표시
+    if (card)
       setTimeout(function () {
         card.classList.add("footer-card-visible");
       }, 100);
-    }
   })();
 
   /* ══════════════════════════════
-     9. 섹션 빈공간 제거
-     각 섹션의 min-height를 auto로 재설정
+     9. 섹션 min-height auto
   ══════════════════════════════ */
   (function () {
     var sections = document.querySelectorAll(
@@ -538,13 +533,11 @@
     sections.forEach(function (s) {
       s.style.minHeight = "auto";
     });
-    // app-section 하단 여백 제거
     var appSection = document.getElementById("appSection");
     if (appSection) {
       appSection.style.minHeight = "auto";
       appSection.style.paddingBottom = "24px";
     }
-    // card section
     var cardSec = document.getElementById("cardSection");
     if (cardSec) cardSec.style.minHeight = "auto";
   })();
